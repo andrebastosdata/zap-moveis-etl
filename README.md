@@ -1,34 +1,9 @@
-<h1 align="center"> ETL Zap Moveis</h1>
+<h1 align="center">ETL Zap Móveis</h1>
+This project implements an ETL (Extract, Transform, Load) pipeline for the company Zap Móveis, utilizing Azure DataLake Gen 1 and Databricks to process and manage large volumes of data.
 
-ETL com dataset da empresa ZapMoveis utilizando Azure DataLake Gen 1 e Databricks
+<h2>Technologies Used:</h2> <ul> <li><strong>Azure Data Lake Gen 1:</strong> A highly scalable cloud-based storage solution for big data analytics, allowing for the ingestion of both structured and unstructured data.</li> <li><strong>Azure Databricks:</strong> A fast, easy, and collaborative Apache Spark-based analytics platform optimized for Azure, used for data processing and transformation in this project.</li> <li><strong>Delta Lake:</strong> A storage layer that brings reliability to data lakes, offering ACID transactions, scalable metadata handling, and unification of streaming and batch data processing.</li> <li><strong>Scala:</strong> A scalable and functional programming language that was used to write the ETL jobs within Databricks.</li> </ul> <h2>Project Steps:</h2> <ol> <li> <strong>Application Registration:</strong> <br>Set up an Azure Active Directory application registration, which was used to grant Databricks cluster access to read and write files in the Azure Data Lake Gen1. </li> <li> <strong>Azure Data Lake Gen1 Setup:</strong> <br>Created an Azure DataLake Gen1 resource to store and manage the raw data for the ETL pipeline. </li> <li> <strong>Data Lake Architecture Design (Four-Layered Architecture):</strong> <br>Designed and implemented a four-layer architecture in the Data Lake to manage the different stages of data processing: <ul> <li><strong>Inbound Layer:</strong> This layer stores raw files in their original format (JSON) without any transformations, serving as the initial landing zone for all incoming data.</li> <li><strong>Bronze Layer:</strong> Here, the data is stored in an optimized format (using Delta Lake) but still remains untransformed to ensure the integrity of the raw data.</li> <li><strong>Silver Layer:</strong> In this layer, data from the bronze layer is cleaned, transformed, and formatted for further analysis or processing.</li> <li><strong>Gold Layer:</strong> This layer contains fully processed, cleaned, and transformed data that is ready for analysis, reporting, or machine learning model training.</li> </ul> </li> </ol> <h2>Delta Lake and Table Management:</h2>
+Throughout the Bronze, Silver, and Gold layers, I utilized Delta Tables to take advantage of the robust features provided by Delta Lake in Databricks.
 
-<h2>Nesse projeto, utilizei as seguintes tecnologias:</h2>
-<ul>
-    <li>Azure Data lake Gen 1</li>
-    <li>Azure Databricks</li>
-    <li>Delta Lake</li>
-    <li>Scala</li>
-</ul>
+<ul> <li><strong>Data Storage Compatibility:</strong> Delta Lake is compatible with Apache Spark and is specifically designed to handle large datasets. It provides advanced features for big data processing, including schema enforcement and efficient storage management.</li> <li><strong>ACID Transactions:</strong> Delta Lake introduces ACID (Atomicity, Consistency, Isolation, Durability) transactions, which bring traditional data warehouse capabilities to big data processing.</li> </ul> <h2>Architecture Diagram:</h2>
 
-<h2>Steps do projeto:</h2>
-<ol>
-    <li>Criei um application registration, que vai servir para permitir que o cluster databricks tenha permissão de leitura e escrita nos arquivos do azure data lake</li>
-    <li>Subi um Azure DataLake Gen1</li>
-    <li>Montei a arquitetura do DataLake (com 4 camadas):</li>
-          <ul>
-            <li>inbound: Camada do meu datalake que vai armazenar os arquivos no seu formato original (JSON) e sem fazer transformações</li>
-            <li>bronze: Camada do meu datalake que vai armazenar os arquivos em um formato otimizado, mas também não vai fazer transformações</li>
-            <li>silver: Camada do meu datalake que vai ler os dados da camada bronze e vai fazer transformações e limpezas</li>
-            <li>Gold: Camada do meu datalake onde os dados estão prontos para anális ou treinamentos</li>
-          </ul>
-</ol>
-
-Nas camadas bronze, silver e gold trabalhei com delta tables com o objetivo de aproveitar da poderosa ferramenta Delta Lake do databricks.
-
-<ul>
-    <li>Storage de Dados compatível com Apache Spark (desenvolvida pelo databricks) projetada para lidar com grandes volumes de dados e fornecer funcionalidades avançadas para processamento de dados em big data.</li>
-    <li>Trás as principais caracteristicas de um data warehouse (Transações ACID, Consistência, Isolamento, Durabilidade...)</li>
-</ul>
-
-Uma boa representação da arquitetura:
 ![image](https://github.com/andrebastosdata/zap-moveis-etl/assets/173493147/f533aa5d-c929-45bb-af72-95fa733f1065)
